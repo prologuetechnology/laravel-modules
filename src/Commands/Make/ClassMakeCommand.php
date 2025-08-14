@@ -34,12 +34,17 @@ class ClassMakeCommand extends GeneratorCommand
         return (new Stub($this->stub(), [
             'NAMESPACE' => $this->getClassNamespace($this->module()),
             'CLASS' => $this->typeClass(),
+            'LOWER_NAME' => $this->module()->getLowerName(),
+            'MODULE' => $this->getModuleName(),
+            'NAME' => $this->getClass(),
+            'STUDLY_NAME' => $this->module()->getStudlyName(),
+            'MODULE_NAMESPACE' => $this->laravel['modules']->config('namespace'),
         ]))->render();
     }
 
     public function stub(): string
     {
-        return $this->option('invokable') ? '/class-invoke.stub' : '/class.stub';
+        return $this->option('invokable') ? "/{$this->type()}-invoke.stub" : "/{$this->type()}.stub";
     }
 
     public function getDestinationFilePath(): string
