@@ -35,6 +35,7 @@ class EventProviderMakeCommand extends GeneratorCommand
         return (new Stub($this->getStubName(), [
             'NAMESPACE' => $this->getClassNamespace($module),
             'CLASS' => $this->getClassNameWithoutNamespace(),
+             'STUDLY_NAME' => $module->getStudlyName(),
         ]))->render();
     }
 
