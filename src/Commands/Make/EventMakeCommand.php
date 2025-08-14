@@ -35,6 +35,7 @@ class EventMakeCommand extends GeneratorCommand
         return (new Stub('/event.stub', [
             'NAMESPACE' => $this->getClassNamespace($module),
             'CLASS' => $this->getClass(),
+            'STUDLY_NAME' => $module->getStudlyName(),
         ]))->render();
     }
 
